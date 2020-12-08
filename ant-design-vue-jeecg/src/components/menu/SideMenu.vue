@@ -1,7 +1,7 @@
 <template>
   <a-layout-sider
     :class="['sider', isDesktop() ? null : 'shadow', theme, fixSiderbar ? 'ant-fixed-sidemenu' : null ]"
-    width="200px"
+    width="208px"
     :collapsible="collapsible"
     v-model="collapsed"
     :trigger="null">
@@ -72,18 +72,18 @@
     }
   }
 </script>
-<style lang="scss" scoped>
+<style lang="less" scoped>
 
   /* update_begin author:sunjianlei date:20190509 for: 修改侧边导航栏滚动条的样式 */
   .sider {
-    $scrollBarSize: 10px;
+    @scrollBarSize: 10px;
 
     ul.ant-menu {
 
       /* 定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
       &::-webkit-scrollbar {
-        width: $scrollBarSize;
-        height: $scrollBarSize;
+        width: @scrollBarSize;
+        height: @scrollBarSize;
         background-color: transparent;
         display: none;
       }
@@ -109,7 +109,7 @@
 
       /* 定义滑块 */
       &::-webkit-scrollbar-thumb {
-        border-radius: $scrollBarSize;
+        border-radius: @scrollBarSize;
         background-color: #eee;
         box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
 
@@ -136,16 +136,48 @@
           background-color: #999999;
         }
       }
+      background-color: rgb(48, 65, 86);
+      /deep/ .ant-menu-submenu-title:hover{
+        background-color: #263445;
+      }
+      /deep/ .ant-menu-item:hover{
+        background-color: #263445;
+      }
+      /deep/ .ant-menu-item-selected {
+        background-color: #263445;
+      }
+      /deep/ .ant-menu-item-selected i{
+        color: rgb(24, 144, 255);
+      }
+      /deep/ .ant-menu-item-selected span{
+        color: rgb(24, 144, 255);
+      }
+      /deep/ .ant-menu-inline.ant-menu-sub{
+        background-color: #1f2d3d;
+      }
+      /deep/ .ant-menu-inline.ant-menu-sub li:hover{
+        background-color: #1f2d3d;
+      }
+      /deep/ .ant-menu-inline.ant-menu-sub .ant-menu-submenu-title:hover{
+        background-color: #1f2d3d;
+      }
+      /deep/ .ant-menu-inline.ant-menu-sub .ant-menu-item-selected{
+        background-color: #1f2d3d;
+      }
+      /deep/ .ant-menu-inline.ant-menu-sub .ant-menu-item-selected span{
+        color: rgb(24, 144, 255);
+      }
+      /deep/ .ant-menu-inline.ant-menu-sub .ant-menu-item-selected i{
+        color: rgb(24, 144, 255);
+      }
     }
-
   }
 
   /* update_end author:sunjianlei date:20190509 for: 修改侧边导航栏滚动条的样式 */
-
 </style>
 
 <!-- update_begin author:sunjianlei date:20190530 for: 选中首页的时候不显示背景颜色 -->
-<style lang="scss">
+<style lang="less">
   .ant-menu.ant-menu-root {
     & > .ant-menu-item:first-child {
       background-color: transparent;
@@ -156,7 +188,7 @@
 
       &.ant-menu-item-selected {
         & > a, & > a:hover {
-          color: #1890ff;
+          color: @primary-color;
         }
       }
     }
